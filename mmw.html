@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math in Our World — Interactive Reviewer</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <div class="brand">
+      <div class="mark">π</div>
+      <div class="brand-text">
+        <h1>Mathematics in Our World</h1>
+        <span>Interactive course reviewer · 4 units</span>
+      </div>
+    </div>
+    <div class="search-wrap">
+      <input type="text" id="searchInput" placeholder="Search any topic, term or formula…">
+    </div>
+    <div class="header-actions">
+      <button class="icon-btn" id="themeToggle" title="Toggle dark mode">🌙</button>
+    </div>
+  </div>
+  <div class="progress-rail"><div class="progress-fill" id="progressFill"></div></div>
+  <nav class="tabbar" id="tabbar"></nav>
+</header>
+
+<section class="dash-section">
+  <div class="graph-bg" style="position:absolute; inset:0; height:100%; z-index:0;"></div>
+  <div class="dash-grid" id="dashGrid"></div>
+</section>
+
+<main>
+  <div class="section" id="reviewerSection">
+    <div class="section-head">
+      <div>
+        <h2>📖 Reviewer</h2>
+        <p class="sub">Tap any card to expand it. Opening a topic counts toward your study progress.</p>
+      </div>
+    </div>
+    <p id="resultsMeta"></p>
+    <div class="topic-list" id="topicList"></div>
+  </div>
+
+  <div class="section" id="flashcardSection">
+    <div class="section-head">
+      <div>
+        <h2>🗂️ Flashcards</h2>
+        <p class="sub">Flip, shuffle, and mark cards mastered as you learn them.</p>
+      </div>
+    </div>
+    <div class="fc-wrap">
+      <div class="fc-filterbar" id="fcFilterBar"></div>
+      <div class="fc-scene">
+        <div class="fc-card" id="fcCard">
+          <div class="fc-face front">
+            <div class="fc-eyebrow" id="fcFrontTag">UNIT</div>
+            <div class="fc-text" id="fcFrontText"></div>
+            <div class="fc-hint">Tap to flip</div>
+          </div>
+          <div class="fc-face back">
+            <div class="fc-eyebrow">ANSWER</div>
+            <div class="fc-text" id="fcBackText"></div>
+            <div class="fc-hint">Tap to flip back</div>
+          </div>
+        </div>
+      </div>
+      <div class="fc-progress" id="fcProgress"></div>
+      <div class="fc-controls">
+        <button class="btn round" id="fcPrev">⟵ Prev</button>
+        <button class="btn round" id="fcShuffle">🔀 Shuffle</button>
+        <button class="btn round master" id="fcMaster">⭐ Mark mastered</button>
+        <button class="btn round" id="fcNext">Next ⟶</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="quizSection">
+    <div class="section-head">
+      <div>
+        <h2>✅ Practice Quiz</h2>
+        <p class="sub">20 questions pulled from all four units. Your best score is saved.</p>
+      </div>
+    </div>
+    <div class="quiz-card" id="quizCard"></div>
+  </div>
+
+  <div class="section" id="gamesSection">
+    <div class="section-head">
+      <div><h2>🎮 Mini Games</h2><p class="sub">Two quick games to test recall.</p></div>
+    </div>
+    <div class="games-grid">
+      <div class="game-card">
+        <h3>🔗 Match the Concept</h3>
+        <div class="match-cols">
+          <div class="match-col" id="matchLeft"></div>
+          <div class="match-col" id="matchRight"></div>
+        </div>
+        <div class="match-status" id="matchStatus"></div>
+        <button class="btn round" id="matchReset" style="margin-top:10px;">🔄 New round</button>
+      </div>
+      <div class="game-card">
+        <h3>⚖️ True or False Challenge</h3>
+        <div class="tf-card">
+          <div class="quiz-meta"><span id="tfCount"></span><span id="tfScoreTop"></span></div>
+          <div class="tf-q" id="tfQuestion"></div>
+          <div class="tf-actions">
+            <button class="tf-btn" id="tfTrue">True</button>
+            <button class="tf-btn" id="tfFalse">False</button>
+          </div>
+          <div class="tf-feedback" id="tfFeedback"></div>
+          <div class="tf-score" id="tfFinal"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>Made for focused, distraction-free reviewing · Data stays on your device</footer>
+</main>
+
+<div class="fab-stack">
+  <div>
+    <button class="fab" id="formulaFab" title="Formula sheet">Σ</button>
+    <div class="fab-label">Formulas</div>
+  </div>
+  <div>
+    <button class="fab" id="studyFab" title="Study mode">📖</button>
+    <div class="fab-label">Study</div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="formulaModal">
+  <div class="modal-box">
+    <h2>Quick Formula Sheet <button id="closeFormula">✕</button></h2>
+    <div id="formulaList"></div>
+  </div>
+</div>
+
+<div id="studyOverlay">
+  <div class="study-top">
+    <strong id="studyCounter"></strong>
+    <button class="icon-btn" id="studyExit">✕</button>
+  </div>
+  <div class="study-body"><div class="study-content" id="studyContent"></div></div>
+  <div class="study-nav">
+    <button class="btn round" id="studyPrev">⟵ Prev</button>
+    <button class="btn round" id="studyNext">Next ⟶</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
